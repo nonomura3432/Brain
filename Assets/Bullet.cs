@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    GameObject player;
-    [SerializeField] private GameObject BulletPrefab;
-    float timer = 0;
+    float speedX = 0.01f;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.player = GameObject.Find("Player");
-        Vector3 vector = new Vector3(-8f, player.transform.position.y, 0);
-        transform.position = new Vector3(-8f, player.transform.position.y, 0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-        //transform.Translate(0.03f, Player.transform.position.y, 0);
-
-     
-        timer += Time.deltaTime*10;
-        
-        
-        transform.position = new Vector3(timer,0,0);
+        transform.position = transform.position+ new Vector3(speedX, 0, 0);
         
         if(transform.position.x>10.0f)
         {

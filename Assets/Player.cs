@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         }
         if(Input.GetKeyDown("space"))
         {
-            Instantiate(BulletPrefab);
+            Instantiate(BulletPrefab,transform.position, Quaternion.identity);
         }
 
     }
