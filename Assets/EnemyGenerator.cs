@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGenerator : MonoBehaviour
+public class EnemyGenrator : MonoBehaviour
 {
     //public GameObject enemyPrefab as GameObject;
     //private float interval = 2.0f;

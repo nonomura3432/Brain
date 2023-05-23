@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float speedX = 0.01f;
+    private GameObject director;
+    float speedX = 0.05f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        this.director = GameObject.Find("GameDirector");
     }
 
     // Update is called once per frame
@@ -26,7 +27,8 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("hit");
+        this.director.GetComponent<GameDirector>().hitEnemy();
         Destroy(collision.gameObject);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
