@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    //public GameObject enemyPrefab as GameObject;
-    //private float interval = 2.0f;
-    //private float timeElapsed = 0.0f;
-
-    //public GameObject EnemyPrefab;
-
     [SerializeField] private GameObject EnemyPrefab;
     [SerializeField] private GameObject GameDirector;
     float span = 2.0f;
