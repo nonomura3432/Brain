@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     //’e‚ª“G‚É‚ ‚½‚é‚Æ“G‚Æ’e‚ªÁ–Å‚·‚é
     private void OnTriggerEnter2D(Collider2D collision)
     {
