@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] Text _waveText;
-    int _waveCount;
+    public int waveCount;
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -17,18 +18,18 @@ public class WaveManager : MonoBehaviour
 
     public void IncrementCount()
     {
-        _waveCount++;
-        if (_waveCount ==4)
+        waveCount++;
+        if (waveCount ==4)
         {
             Reset();
         }
-        _waveText.text = $"Wave {_waveCount}";
+        _waveText.text = $"Wave {waveCount}";
     }
 
     public void Reset()
     {
-        _waveCount = 1;
-        _waveText.text = $"Wave {_waveCount}";
+        waveCount = 1;
+        _waveText.text = $"Wave {waveCount}";
     }
     
 }

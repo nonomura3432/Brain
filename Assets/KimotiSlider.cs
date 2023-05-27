@@ -12,7 +12,7 @@ public class KimotiSlider : MonoBehaviour
 
     readonly float _increaseKairaku = 5;
     readonly float _increaseSutoresu = 30;
-    readonly float _increaseSutoresuByFrame = 0.0002f;
+    readonly float _increaseSutoresuByFrame = 0.0025f;
 
     readonly float _deadLine = 10;
 

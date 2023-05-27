@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_gameDirector.isShowStory) return;
+        
         if (!_gameDirector.isGameOver)
         {
             if (!_gameDirector.isTimeUp)
