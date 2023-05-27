@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameDirector : MonoBehaviour
 {
     [SerializeField] KimotiSlider kimotiSlideer;
+    [SerializeField] GameObject gameOverTextObj;
+    
     EnemyGenerator enemyGenerator;
     GameObject timerText;
     private GameObject pointText;
@@ -51,5 +53,10 @@ public class GameDirector : MonoBehaviour
             timerText.GetComponent<Text>().text = "TimeUp!";
         }
 
+    }
+
+    public  void ShowGameOver()
+    {
+        gameOverTextObj.SetActive(true);
     }
 }
