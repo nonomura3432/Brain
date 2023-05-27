@@ -12,13 +12,12 @@ public class GameDirector : MonoBehaviour
     float time = 30.0f;
     private int point = 0;
     public bool isTimeUp { get; private set; }
-
     private Text scoreText;
 
     public void hitEnemy()
     {
         enemyGenerator = GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>();
-        point += (int) (enemyGenerator.scaleX * 10.0f);
+        point += (int)(enemyGenerator.scaleX * 10.0f);
     }
 
     // Start is called before the first frame update
@@ -32,8 +31,8 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
-        scoreText.text  = point.ToString() + "point";
+
+        scoreText.text = point.ToString() + "point";
         if (0 <= time)
         {
             time -= Time.deltaTime;
@@ -47,5 +46,3 @@ public class GameDirector : MonoBehaviour
 
     }
 }
-
-

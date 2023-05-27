@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyGenrator : MonoBehaviour
 {
@@ -9,10 +11,6 @@ public class EnemyGenrator : MonoBehaviour
     [SerializeField] private GameObject GameDirector;
     float span = 2.0f;
     float delta = 0;
-    public float greenScaleX { get; private set; }
-    private float greenScaleY; 
-    public float redScaleX { get; private set; }
-    private float redScaleY;
 
     // Start is called before the first frame update
     void Start()
@@ -27,18 +25,22 @@ public class EnemyGenrator : MonoBehaviour
         if (this.delta > this.span & GameDirector.GetComponent<GameDirector>().isTimeUp == false)
         {
             this.delta = 0;
-            float py = Random.Range(-3.7f, 3.7f);
-            greenScaleX = Random.Range(0.5f, 2f);
-            greenScaleY = greenScaleX;
-            redScaleX = Random.Range(0.5f, 2f);
-            redScaleY = redScaleX;
-            Vector3 vector = new Vector3(7, py, 0);
-            Enemy_Green.transform.localScale = new Vector3(greenScaleX,greenScaleY, 1);
-            Enemy_Red.transform.localScale = new Vector3(redScaleX, redScaleY, 1);
-            Debug.Log($"Enemy_Green.transform.localScale‚Í{Enemy_Green.transform.localScale}");
-            Debug.Log($"Enemy_Red.transform.localScale‚Í{Enemy_Red.transform.localScale}");
-            Instantiate(Enemy_Green, vector, Quaternion.identity);
-            Instantiate(Enemy_Red, vector, Quaternion.identity);
+            float greenPy = Random.Range(-3.7f, 3.7f);
+            int roundedGreenPy = (int)Math.Floor(greenPy);
+            Debug.Log($"py‚Í{roundedGreenPy}");
+            float redPy = Random.Range(-3.7f, 3.7f);
+            int roundedRedPy = (int)Math.Floor(redPy);
+            Debug.Log($"py‚Í{roundedRedPy}");
+            //float py = Random.Range(-3.7f, 3.7f);
+            //Math.Floor(py);
+            //Debug.Log($"py‚Í{py}");
+            Vector3 greenVector = new Vector3(7, greenPy, 0);
+            Vector3 redVector = new Vector3(7, redPy, 0);
+            if (greenPy!=redPy)
+            {
+                Instantiate(Enemy_Green, greenVector, Quaternion.identity);
+            }
+            Instantiate(Enemy_Red, redVector, Quaternion.identity);
         }
     }
 }
