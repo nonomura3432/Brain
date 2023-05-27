@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour
 {
+    [SerializeField] KimotiSlider kimotiSlideer;
     EnemyGenerator enemyGenerator;
     GameObject timerText;
     private GameObject pointText;
@@ -14,10 +15,16 @@ public class GameDirector : MonoBehaviour
     public bool isTimeUp { get; private set; }
     private Text scoreText;
 
-    public void hitEnemy()
+    public void hitEnemy(Collider2D collision)
     {
-        enemyGenerator = GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>();
-        point += (int)(enemyGenerator.scaleX * 10.0f);
+        if (collision.CompareTag("Enemy_Green"))
+        {
+            kimotiSlideer.HitKairaku();
+        }
+        else if(collision.CompareTag("Enemy_Red"))
+        {
+            kimotiSlideer.HitSutoresu();
+        }
     }
 
     // Start is called before the first frame update

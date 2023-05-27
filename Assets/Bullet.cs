@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("hit");
-        this.director.GetComponent<GameDirector>().hitEnemy();
+        this.director.GetComponent<GameDirector>().hitEnemy(collision);
         Destroy(collision.gameObject);
         Destroy(gameObject);
     }
