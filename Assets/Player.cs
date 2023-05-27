@@ -20,29 +20,40 @@ public class Player : MonoBehaviour
     {
         if (!_gameDirector.isGameOver)
         {
-            if (Input.GetKey("down") & _gameDirector.isTimeUp == false)
+            if (!_gameDirector.isTimeUp)
             {
-                transform.Translate(0, -0.01f, 0);
+                if (Input.GetKey("down") & _gameDirector.isTimeUp == false)
+                {
+                    transform.Translate(0, -0.01f, 0);
+                }
+
+                if (Input.GetKey("up") & _gameDirector.isTimeUp == false)
+                {
+                    transform.Translate(0, 0.01f, 0);
+                }
+
+                if (Input.GetKeyDown("space") & _gameDirector.isTimeUp == false)
+                {
+                    Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+                }
             }
-            if(Input.GetKey("up") & _gameDirector.isTimeUp == false)
+            else
             {
-                transform.Translate(0, 0.01f, 0);
-            }
-            if(Input.GetKeyDown("space") & _gameDirector.isTimeUp == false)
-            {
-                Instantiate(BulletPrefab,transform.position, Quaternion.identity);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    var waveManager = FindObjectOfType<WaveManager>();
+                    waveManager.IncrementCount();
+                    SceneManager.LoadScene("SampleScene");
+                }
             }
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                var waveManager = FindObjectOfType<WaveManager>();
-                waveManager.IncrementCount();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {   var waveManager = FindObjectOfType<WaveManager>();
+                waveManager.Reset();
                 SceneManager.LoadScene("SampleScene");
             }
         }
-
-
     }
 }

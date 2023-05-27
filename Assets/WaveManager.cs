@@ -25,9 +25,10 @@ public class WaveManager : MonoBehaviour
         _waveText.text = $"Wave {_waveCount}";
     }
 
-     void Reset()
+    public void Reset()
     {
         _waveCount = 1;
+        _waveText.text = $"Wave {_waveCount}";
     }
     
 }
