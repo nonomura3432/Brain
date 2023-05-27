@@ -8,11 +8,15 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject GameDirector;
     GameDirector _gameDirector;
 
+    float playerPosXRation = 1 / 10.0f;
+    int currentGridYIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         _gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
         
+        transform.position = GridPosition.GridPosByIndex(playerPosXRation, GridPosition.numOfDivide / 2); // 最初は真ん中あたりにいることにする
     }
 
     // Update is called once per frame
@@ -22,17 +26,33 @@ public class Player : MonoBehaviour
         {
             if (!_gameDirector.isTimeUp)
             {
-                if (Input.GetKey("down") & _gameDirector.isTimeUp == false)
+                // if (Input.GetKey("down") & _gameDirector.isTimeUp == false)
+                // {
+                //     transform.Translate(0, -0.01f, 0);
+                // }
+                //
+                // if (Input.GetKey("up") & _gameDirector.isTimeUp == false)
+                // {
+                //     transform.Translate(0, 0.01f, 0);
+                // }
+                //
+                // if (Input.GetKeyDown("space") & _gameDirector.isTimeUp == false)
+                // {
+                //     Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+                // }
+                if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    transform.Translate(0, -0.01f, 0);
+                    if(currentGridYIndex <= 0) return;
+                    currentGridYIndex--;
+                    transform.position = GridPosition.GridPosByIndex(playerPosXRation, currentGridYIndex);
                 }
-
-                if (Input.GetKey("up") & _gameDirector.isTimeUp == false)
+                if(Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    transform.Translate(0, 0.01f, 0);
+                    if(currentGridYIndex >= GridPosition.numOfDivide-1 ) return;
+                    currentGridYIndex++;
+                    transform.position = GridPosition.GridPosByIndex(playerPosXRation, currentGridYIndex);
                 }
-
-                if (Input.GetKeyDown("space") & _gameDirector.isTimeUp == false)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     Instantiate(BulletPrefab, transform.position, Quaternion.identity);
                 }
