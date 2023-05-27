@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if(_director.isGameOver)return;
+        if(_director.isShowStory)return;
         
         transform.Translate(-0.001f,0,0);
         

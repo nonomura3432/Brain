@@ -27,6 +27,7 @@ public class KimotiSlider : MonoBehaviour
 
     void Update()
     {
+        if (gameDirector.isShowStory) return;
         _kimoti -= _increaseSutoresuByFrame;
         kimotiSlideer.value =  _kimoti / _maxKimoti;
         if(_kimoti <= _deadLine)

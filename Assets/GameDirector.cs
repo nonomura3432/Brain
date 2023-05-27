@@ -17,7 +17,7 @@ public class GameDirector : MonoBehaviour
     EnemyGenerator enemyGenerator;
     GameObject timerText;
     private GameObject pointText;
-    float time = 2.0f;
+    float time = 30.0f;
     private int point = 0;
     public bool isTimeUp { get; private set; }
     public bool isGameOver { get; private set; }
@@ -88,6 +88,8 @@ public class GameDirector : MonoBehaviour
         storyText.text = content;
         yield return new WaitForSeconds(10.0f);
         isShowStory = false;
+        var waveManager = FindObjectOfType<WaveManager>();
+        waveManager.IncrementCount();
         SceneManager.LoadScene("SampleScene");
     }
 
