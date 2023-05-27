@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public GameObject BulletPrefab;
@@ -18,19 +18,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_gameDirector.isGameOver) return;
-        if (Input.GetKey("down") & _gameDirector.isTimeUp == false)
+        if (!_gameDirector.isGameOver)
         {
-            transform.Translate(0, -0.01f, 0);
+            if (Input.GetKey("down") & _gameDirector.isTimeUp == false)
+            {
+                transform.Translate(0, -0.01f, 0);
+            }
+            if(Input.GetKey("up") & _gameDirector.isTimeUp == false)
+            {
+                transform.Translate(0, 0.01f, 0);
+            }
+            if(Input.GetKeyDown("space") & _gameDirector.isTimeUp == false)
+            {
+                Instantiate(BulletPrefab,transform.position, Quaternion.identity);
+            }
         }
-        if(Input.GetKey("up") & _gameDirector.isTimeUp == false)
+        else
         {
-            transform.Translate(0, 0.01f, 0);
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("SampleScene");
+            }
         }
-        if(Input.GetKeyDown("space") & _gameDirector.isTimeUp == false)
-        {
-            Instantiate(BulletPrefab,transform.position, Quaternion.identity);
-        }
+
 
     }
 }

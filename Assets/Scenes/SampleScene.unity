@@ -249,7 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy_Green: {fileID: 4454045533057086260, guid: d6a79261daec3e249bd40d0d62f31c32, type: 3}
   Enemy_Red: {fileID: 5158218107908825733, guid: aee9f6f43d665bb428cc09f9f96ab62d, type: 3}
-  GameDirector: {fileID: 0}
 --- !u!1 &214408054
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kimotiSlideer: {fileID: 1378260894}
+  gameOverTextObj: {fileID: 1663412492}
 --- !u!4 &1491115622
 Transform:
   m_ObjectHideFlags: 0
@@ -765,7 +765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1663412493
 RectTransform:
   m_ObjectHideFlags: 0
