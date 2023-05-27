@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class KimotiSlider : MonoBehaviour
 {
     [SerializeField] Slider kimotiSlideer;
+    GameDirector gameDirector;
 
     readonly float _increaseKairaku = 5;
     readonly float _increaseSutoresu = 30;
@@ -20,6 +21,7 @@ public class KimotiSlider : MonoBehaviour
 
     void Start()
     {
+        gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
         _kimoti = _maxKimoti / 2;
     }
 
@@ -30,6 +32,7 @@ public class KimotiSlider : MonoBehaviour
         if(_kimoti <= _deadLine)
         {
             OnDead();
+            gameDirector.ShowGameOver();
         }
     }
 
