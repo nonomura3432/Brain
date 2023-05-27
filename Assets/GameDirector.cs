@@ -15,10 +15,23 @@ public class GameDirector : MonoBehaviour
 
     private Text scoreText;
 
+    // Kimoti
+    KimotiSlider _kimotiSlider;
+
     public void hitEnemy()
     {
         enemyGenerator = GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>();
         point += (int) (enemyGenerator.scaleX * 10.0f);
+        
+        // ToDo: Enemyが快楽かストレスかを反映する
+        if (true) //とりあえずは常に「快楽」を撃つことにする
+        {
+            _kimotiSlider.HitKairaku();
+        }
+        else
+        {
+            _kimotiSlider.HitSutoresu();
+        }
     }
 
     // Start is called before the first frame update
@@ -27,6 +40,8 @@ public class GameDirector : MonoBehaviour
         timerText = GameObject.Find("Time");
         pointText = GameObject.Find("Point");
         scoreText = pointText.GetComponent<Text>();
+        
+        _kimotiSlider = GameObject.Find("KimotiSlider").GetComponent<KimotiSlider>();
     }
 
     // Update is called once per frame
@@ -47,5 +62,4 @@ public class GameDirector : MonoBehaviour
 
     }
 }
-
 
