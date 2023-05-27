@@ -19,6 +19,7 @@ public class KimotiSlider : MonoBehaviour
     {
         _kimoti -= _increaseSutoresuByFrame;
         kimotiSlideer.value =  _kimoti / _maxKimoti;
+        Debug.Log($"ratio = {kimotiSlideer.value}");
     }
 
     public void HitKairaku()
