@@ -8,32 +8,34 @@ public class EnemyGenrator : MonoBehaviour
 {
     [SerializeField] private GameObject Enemy_Green;
     [SerializeField] private GameObject Enemy_Red;
-    [SerializeField] private GameObject GameDirector;
     float span = 2.0f;
     float delta = 0;
+
+    GameDirector _gameDirector;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameDirector = GameObject.Find("GameDirector");
+        _gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_gameDirector.isGameOver) return;
         this.delta += Time.deltaTime;
-        if (this.delta > this.span & GameDirector.GetComponent<GameDirector>().isTimeUp == false)
+        if (this.delta > this.span & _gameDirector.isTimeUp == false)
         {
             this.delta = 0;
             float greenPy = Random.Range(-3.7f, 3.7f);
             int roundedGreenPy = (int)Math.Floor(greenPy);
-            Debug.Log($"py‚Í{roundedGreenPy}");
+            Debug.Log($"pyï¿½ï¿½{roundedGreenPy}");
             float redPy = Random.Range(-3.7f, 3.7f);
             int roundedRedPy = (int)Math.Floor(redPy);
-            Debug.Log($"py‚Í{roundedRedPy}");
+            Debug.Log($"pyï¿½ï¿½{roundedRedPy}");
             //float py = Random.Range(-3.7f, 3.7f);
             //Math.Floor(py);
-            //Debug.Log($"py‚Í{py}");
+            //Debug.Log($"pyï¿½ï¿½{py}");
             Vector3 greenVector = new Vector3(7, greenPy, 0);
             Vector3 redVector = new Vector3(7, redPy, 0);
             if (greenPy!=redPy)

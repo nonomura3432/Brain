@@ -5,17 +5,18 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject EnemyPrefab;
-    [SerializeField] private GameObject GameDirector;
     float span = 2.0f;
     float delta = 0;
     public float scaleX { get; private set; }
     private float scaleY;
+
+    GameDirector _gameDirector;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        GameDirector = GameObject.Find("GameDirector");
+        _gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
     // Update is called once per frame
@@ -31,8 +32,9 @@ public class EnemyGenerator : MonoBehaviour
     //}
 
     {
+        if(_gameDirector.isGameOver) return;
         this.delta += Time.deltaTime;
-        if (this.delta > this.span & GameDirector.GetComponent<GameDirector>().isTimeUp == false)
+        if (this.delta > this.span & _gameDirector.isTimeUp == false)
         {
             this.delta = 0;
             float py = Random.Range(-3.7f, 3.7f);
@@ -40,7 +42,7 @@ public class EnemyGenerator : MonoBehaviour
             scaleY = scaleX;
             Vector3 vector = new Vector3(7, py, 0);
             EnemyPrefab.transform.localScale = new Vector3(scaleX,scaleY, 1);
-            Debug.Log($"EnemyPrefab.transform.localScale‚Í{EnemyPrefab.transform.localScale}");
+            Debug.Log($"EnemyPrefab.transform.localScaleï¿½ï¿½{EnemyPrefab.transform.localScale}");
             Instantiate(EnemyPrefab, vector, Quaternion.identity);
 
         }

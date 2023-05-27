@@ -15,6 +15,7 @@ public class GameDirector : MonoBehaviour
     float time = 30.0f;
     private int point = 0;
     public bool isTimeUp { get; private set; }
+    public bool isGameOver { get; private set; }
     private Text scoreText;
 
     public void hitEnemy(Collider2D collision)
@@ -40,7 +41,7 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isGameOver) return;
         scoreText.text = point.ToString() + "point";
         if (0 <= time)
         {
@@ -55,8 +56,9 @@ public class GameDirector : MonoBehaviour
 
     }
 
-    public  void ShowGameOver()
+    public  void GameOver()
     {
         gameOverTextObj.SetActive(true);
+        isGameOver = true;
     }
 }

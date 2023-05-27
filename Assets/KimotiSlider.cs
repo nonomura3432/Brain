@@ -32,7 +32,7 @@ public class KimotiSlider : MonoBehaviour
         if(_kimoti <= _deadLine)
         {
             OnDead();
-            gameDirector.ShowGameOver();
+            gameDirector.GameOver();
         }
     }
 
