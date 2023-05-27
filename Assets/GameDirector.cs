@@ -8,6 +8,7 @@ public class GameDirector : MonoBehaviour
 {
     [SerializeField] KimotiSlider kimotiSlideer;
     [SerializeField] GameObject gameOverTextObj;
+    [SerializeField] WaveManager waveManger;
     
     EnemyGenerator enemyGenerator;
     GameObject timerText;
@@ -36,6 +37,12 @@ public class GameDirector : MonoBehaviour
         timerText = GameObject.Find("Time");
         pointText = GameObject.Find("Point");
         scoreText = pointText.GetComponent<Text>();
+
+        if (FindObjectOfType<WaveManager>() == null)
+        {
+            Instantiate(waveManger);
+        }
+
     }
 
     // Update is called once per frame

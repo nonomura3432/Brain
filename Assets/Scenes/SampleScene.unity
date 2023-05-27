@@ -733,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kimotiSlideer: {fileID: 1378260894}
   gameOverTextObj: {fileID: 1663412492}
+  waveManger: {fileID: 4979721950899674017, guid: 6406a82e45102474abe06197a4a230df, type: 3}
 --- !u!4 &1491115622
 Transform:
   m_ObjectHideFlags: 0

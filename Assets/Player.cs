@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
+                var waveManager = FindObjectOfType<WaveManager>();
+                waveManager.IncrementCount();
                 SceneManager.LoadScene("SampleScene");
             }
         }
