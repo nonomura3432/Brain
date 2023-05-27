@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    //’e‚ª“G‚É‚ ‚½‚é‚Æ“G‚Æ’e‚ªÁ–Å‚·‚é
+    //å¼¾ãŒæ•µã«ã‚ãŸã‚‹ã¨æ•µã¨å¼¾ãŒæ¶ˆæ»…ã™ã‚‹
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("hit");
